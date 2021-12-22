@@ -1,6 +1,11 @@
 
 #!/bin/sh
 
+# TODO: auto-checkout dotfiles and run install.sh when connecting to 
+# new instance
+# TODO: add cache so install only runs once
+#git clone git://github.com/toddka/dotfiles-1.git ~/dotfiles
+
 # install thoughtbot rcm
 case "$(uname -s)" in
    Darwin)
@@ -23,7 +28,7 @@ case "$(uname -s)" in
      ;;
 esac
 
-env RCRC=$HOME/dotfiles/rcrc rcup
-
-# install ohmyzsh deps
+# install ohmyzsh deps. runs before rcup so that rcup can override ohmyzsh defaults
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+env RCRC=$HOME/dotfiles/rcrc rcup
