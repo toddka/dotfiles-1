@@ -30,5 +30,7 @@ esac
 
 # install ohmyzsh deps. runs before rcup so that rcup can override ohmyzsh defaults
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+git clone https://github.com/spaceship-prompt/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt" --depth=1
+ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
 
 env RCRC=$HOME/dotfiles/rcrc rcup
